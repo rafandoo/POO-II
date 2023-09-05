@@ -1,10 +1,6 @@
 import com.classes.BO.ContatoBO;
 import com.classes.DTO.Contato;
-import com.persistencias.Persistencia;
-import com.persistencias.PersistenciaCSV;
-import com.persistencias.PersistenciaJSON;
-import com.persistencias.PersistenciaXML;
-import com.persistencias.PersistenciaMYSQL;
+import com.persistencias.*;
 
 public class Main {
     public static void main(String[] args) {

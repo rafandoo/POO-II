@@ -1,7 +1,7 @@
 package com.persistencias;
 
 import com.classes.DTO.Contato;
-import com.conexao.ConexaoMYSQL;
+import com.conexao.ConexaoPostgres;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,10 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersistenciaMYSQL implements Persistencia {
+public class PersistenciaPostgres implements Persistencia {
 
     public boolean salvar(Contato contato) {
-        Connection conn = ConexaoMYSQL.getConexao();
+        Connection conn = ConexaoPostgres.getConexao();
         String sql = "INSERT INTO contatos (nome, data_nascimento, telefone, email) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -32,7 +32,7 @@ public class PersistenciaMYSQL implements Persistencia {
 
     public List<Contato> lerContatos() {
         List<Contato> contatos = new ArrayList<>();
-        Connection conn = ConexaoMYSQL.getConexao();
+        Connection conn = ConexaoPostgres.getConexao();
         String sql = "SELECT * FROM contatos";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql);
